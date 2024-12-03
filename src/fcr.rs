@@ -35,6 +35,12 @@ impl TriggerLevel {
         FifoControl(self as u8 | 0b110)
     }
 
+    /// 使能接收队列，产生一个指定阈值并重置接收队列的队列控制设置。
+    #[inline]
+    pub const fn and_enable_reset(self) -> FifoControl {
+        FifoControl(self as u8 | 0b111)
+    }
+
     /// 产生一个指定阈值但不重置接收队列的队列控制设置。
     #[inline]
     pub const fn without_reset(self) -> FifoControl {
